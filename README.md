@@ -1,6 +1,6 @@
 # Android - RefreshAndLoadMore Demo #
 
-下拉刷新和加载更多实现例子。
+下拉刷新和加载更多例子。
 
 ## Author ##
 

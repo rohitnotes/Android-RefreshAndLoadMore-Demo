@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 public class StepOneDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
 
     private static final int PAGE_SIZE = 1;
-    private static final int TOTAL_COUNT = 5;
+    private static final int TOTAL_COUNT = 8;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
