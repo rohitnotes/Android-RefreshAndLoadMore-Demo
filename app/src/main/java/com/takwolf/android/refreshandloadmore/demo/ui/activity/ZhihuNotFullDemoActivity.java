@@ -14,7 +14,6 @@ import com.takwolf.android.refreshandloadmore.demo.model.zhihu.StoryPage;
 import com.takwolf.android.refreshandloadmore.demo.model.zhihu.ZhihuClient;
 import com.takwolf.android.refreshandloadmore.demo.ui.adapter.StoryListAdapter;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
-import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
 
 import butterknife.BindView;
@@ -42,7 +41,7 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
         setContentView(R.layout.activity_refresh_and_load_more);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("知乎日报");
+        toolbar.setTitle("知乎日报第一页不足一屏");
         toolbar.setNavigationOnClickListener(new NavigationFinishClickListener(this));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -64,7 +63,6 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
 
             @Override
             public void onDataOk(StoryPage data) {
-                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(data.getDate());
                 date = data.getDate();
                 adapter.getStoryList().clear();
                 adapter.getStoryList().add(data.getStoryList().get(0)); // 这里只加载一个数据，模拟首页数据不足一屏
@@ -75,7 +73,6 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
 
             @Override
             public void onKindsOfError(@NonNull String message) {
-                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(message);
                 refreshLayout.setRefreshing(false);
             }
 
@@ -88,16 +85,15 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
 
             @Override
             public void onDataOk(StoryPage data) {
-                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(data.getDate());
                 date = data.getDate();
-                adapter.getStoryList().addAll(data.getStoryList());
-                adapter.notifyDataSetChanged();
+                int startPosition = adapter.getItemCount();
+                adapter.getStoryList().add(data.getStoryList().get(0)); // 这里也只加载一个数据，模拟分页长度为 1
+                adapter.notifyItemRangeInserted(startPosition, 1); // 插入长度也要改为 1
                 loadMoreFooter.setState(LoadMoreFooter.STATE_ENDLESS);
             }
 
             @Override
             public void onKindsOfError(@NonNull String message) {
-                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(message);
                 loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
             }
 

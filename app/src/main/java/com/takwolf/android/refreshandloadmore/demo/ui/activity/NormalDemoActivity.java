@@ -78,8 +78,9 @@ public class NormalDemoActivity extends AppCompatActivity implements SwipeRefres
 
             @Override
             public void run() {
+                int startPosition = adapter.getItemCount();
                 adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
-                adapter.notifyDataSetChanged();
+                adapter.notifyItemRangeInserted(startPosition, PAGE_SIZE);
                 loadMoreFooter.setState(adapter.getItemCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
             }
 

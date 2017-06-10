@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="步长不足一屏的例子"
+                android:text="步长不足一屏"
                 android:textAllCaps="false" />
 
             <Button
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="知乎日报第一次不足一屏"
+                android:text="知乎日报第一页不足一屏"
                 android:textAllCaps="false" />
 
         </LinearLayout>

@@ -14,7 +14,6 @@ import com.takwolf.android.refreshandloadmore.demo.model.zhihu.StoryPage;
 import com.takwolf.android.refreshandloadmore.demo.model.zhihu.ZhihuClient;
 import com.takwolf.android.refreshandloadmore.demo.ui.adapter.StoryListAdapter;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
-import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
 
 import butterknife.BindView;
@@ -64,7 +63,6 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onDataOk(StoryPage data) {
-                ToastUtils.with(ZhihuDemoActivity.this).show(data.getDate());
                 date = data.getDate();
                 adapter.getStoryList().clear();
                 adapter.getStoryList().addAll(data.getStoryList());
@@ -75,7 +73,6 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onKindsOfError(@NonNull String message) {
-                ToastUtils.with(ZhihuDemoActivity.this).show(message);
                 refreshLayout.setRefreshing(false);
             }
 
@@ -88,16 +85,15 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onDataOk(StoryPage data) {
-                ToastUtils.with(ZhihuDemoActivity.this).show(data.getDate());
                 date = data.getDate();
+                int startPosition = adapter.getItemCount();
                 adapter.getStoryList().addAll(data.getStoryList());
-                adapter.notifyDataSetChanged();
+                adapter.notifyItemRangeInserted(startPosition, data.getStoryList().size());
                 loadMoreFooter.setState(LoadMoreFooter.STATE_ENDLESS);
             }
 
             @Override
             public void onKindsOfError(@NonNull String message) {
-                ToastUtils.with(ZhihuDemoActivity.this).show(message);
                 loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
             }
 

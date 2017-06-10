@@ -40,7 +40,7 @@ public class StepOneDemoActivity extends AppCompatActivity implements SwipeRefre
         setContentView(R.layout.activity_refresh_and_load_more);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("常规模式");
+        toolbar.setTitle("步长不足一屏");
         toolbar.setNavigationOnClickListener(new NavigationFinishClickListener(this));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -78,8 +78,9 @@ public class StepOneDemoActivity extends AppCompatActivity implements SwipeRefre
 
             @Override
             public void run() {
+                int startPosition = adapter.getItemCount();
                 adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
-                adapter.notifyDataSetChanged();
+                adapter.notifyItemRangeInserted(startPosition, PAGE_SIZE);
                 loadMoreFooter.setState(adapter.getItemCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
             }
 
