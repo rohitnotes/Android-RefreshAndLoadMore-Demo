@@ -41,22 +41,6 @@
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/btn_zhihu_demo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="知乎日报"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/btn_zhihu_not_full_demo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="知乎日报第一页不足一屏"
-                android:textAllCaps="false" />
-
-            <Button
                 android:id="@+id/btn_abs_list_demo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,6 +54,22 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="ListView 第一页不足一屏"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_zhihu_demo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="知乎日报"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_zhihu_not_full_demo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="知乎日报第一页不足一屏"
                 android:textAllCaps="false" />
 
         </LinearLayout>
