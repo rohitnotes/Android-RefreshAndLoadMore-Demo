@@ -61,9 +61,6 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         @BindView(R.id.icon_padding_top)
         View iconPaddingTop;
 
-        @BindView(R.id.icon_padding_bottom)
-        View iconPaddingBottom;
-
         private Story story;
 
         ViewHolder(View itemView) {
@@ -76,7 +73,6 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
             tvTitle.setText(story.getTitle());
             Glide.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);
             iconPaddingTop.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
-            iconPaddingBottom.setVisibility(position == storyList.size() - 1 ? View.VISIBLE : View.GONE);
         }
 
     }

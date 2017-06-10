@@ -64,6 +64,7 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onDataOk(StoryPage data) {
+                ToastUtils.with(ZhihuDemoActivity.this).show(data.getDate());
                 date = data.getDate();
                 adapter.getStoryList().clear();
                 adapter.getStoryList().addAll(data.getStoryList());
@@ -87,6 +88,7 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onDataOk(StoryPage data) {
+                ToastUtils.with(ZhihuDemoActivity.this).show(data.getDate());
                 date = data.getDate();
                 adapter.getStoryList().addAll(data.getStoryList());
                 adapter.notifyDataSetChanged();

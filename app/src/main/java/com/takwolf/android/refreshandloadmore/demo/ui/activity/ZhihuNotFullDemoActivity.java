@@ -64,6 +64,7 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
 
             @Override
             public void onDataOk(StoryPage data) {
+                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(data.getDate());
                 date = data.getDate();
                 adapter.getStoryList().clear();
                 adapter.getStoryList().add(data.getStoryList().get(0)); // 这里只加载一个数据，模拟首页数据不足一屏
@@ -87,6 +88,7 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
 
             @Override
             public void onDataOk(StoryPage data) {
+                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(data.getDate());
                 date = data.getDate();
                 adapter.getStoryList().addAll(data.getStoryList());
                 adapter.notifyDataSetChanged();
