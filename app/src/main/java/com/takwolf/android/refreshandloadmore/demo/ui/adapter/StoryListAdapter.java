@@ -74,7 +74,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         void update(@NonNull Story story, int position) {
             this.story = story;
             tvTitle.setText(story.getTitle());
-            Glide.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).dontAnimate().into(imgThumb);
+            Glide.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);
             iconPaddingTop.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
             iconPaddingBottom.setVisibility(position == storyList.size() - 1 ? View.VISIBLE : View.GONE);
         }

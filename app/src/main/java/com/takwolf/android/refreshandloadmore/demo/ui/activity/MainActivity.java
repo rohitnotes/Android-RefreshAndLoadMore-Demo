@@ -33,4 +33,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ZhihuDemoActivity.class));
     }
 
+    @OnClick(R.id.btn_zhihu_not_full_demo)
+    void onBtnZhihuNotFullDemoClick() {
+        startActivity(new Intent(this, ZhihuNotFullDemoActivity.class));
+    }
+
 }

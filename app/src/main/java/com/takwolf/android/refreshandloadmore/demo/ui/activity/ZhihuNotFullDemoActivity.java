@@ -20,7 +20,7 @@ import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
+public class ZhihuNotFullDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -66,7 +66,7 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
             public void onDataOk(StoryPage data) {
                 date = data.getDate();
                 adapter.getStoryList().clear();
-                adapter.getStoryList().addAll(data.getStoryList());
+                adapter.getStoryList().add(data.getStoryList().get(0)); // 这里只加载一个数据，模拟首页数据不足一屏
                 adapter.notifyDataSetChanged();
                 refreshLayout.setRefreshing(false);
                 loadMoreFooter.setState(LoadMoreFooter.STATE_ENDLESS);
@@ -74,7 +74,7 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onKindsOfError(@NonNull String message) {
-                ToastUtils.with(ZhihuDemoActivity.this).show(message);
+                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(message);
                 refreshLayout.setRefreshing(false);
             }
 
@@ -95,7 +95,7 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onKindsOfError(@NonNull String message) {
-                ToastUtils.with(ZhihuDemoActivity.this).show(message);
+                ToastUtils.with(ZhihuNotFullDemoActivity.this).show(message);
                 loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
             }
 
