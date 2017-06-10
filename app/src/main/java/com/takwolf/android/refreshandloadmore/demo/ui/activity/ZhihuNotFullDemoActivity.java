@@ -38,7 +38,7 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_refresh_and_load_more);
+        setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
 
         toolbar.setTitle("知乎日报第一页不足一屏");

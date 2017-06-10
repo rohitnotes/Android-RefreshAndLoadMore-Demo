@@ -1,0 +1,84 @@
+package com.takwolf.android.refreshandloadmore.demo.ui.adapter;
+
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.takwolf.android.refreshandloadmore.demo.R;
+import com.takwolf.android.refreshandloadmore.demo.model.illust.Illust;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class IllustListAdapter2 extends BaseAdapter {
+
+    private final Activity activity;
+    private final LayoutInflater inflater;
+    private final List<Illust> illustList = new ArrayList<>();
+
+    public IllustListAdapter2(@NonNull Activity activity) {
+        this.activity = activity;
+        inflater = LayoutInflater.from(activity);
+    }
+
+    @NonNull
+    public List<Illust> getIllustList() {
+        return illustList;
+    }
+
+    @Override
+    public int getCount() {
+        return illustList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return illustList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_illust, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.update(illustList.get(position));
+        return convertView;
+    }
+
+    class ViewHolder {
+
+        @BindView(R.id.img_thumb)
+        ImageView imgThumb;
+
+        private Illust illust;
+
+        ViewHolder(View itemView) {
+            ButterKnife.bind(this, itemView);
+        }
+
+        void update(@NonNull Illust illust) {
+            this.illust = illust;
+            Glide.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
+        }
+
+    }
+
+}

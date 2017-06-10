@@ -37,7 +37,7 @@ public class StepOneDemoActivity extends AppCompatActivity implements SwipeRefre
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_refresh_and_load_more);
+        setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
 
         toolbar.setTitle("步长不足一屏");

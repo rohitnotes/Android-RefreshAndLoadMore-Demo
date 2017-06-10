@@ -38,4 +38,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ZhihuNotFullDemoActivity.class));
     }
 
+    @OnClick(R.id.btn_abs_list_demo)
+    void onBtnAbsListDemoClick() {
+        startActivity(new Intent(this, AbsListDemoActivity.class));
+    }
+
+    @OnClick(R.id.btn_abs_list_not_full_demo)
+    void onBtnAbsListNotFullDemoClick() {
+        startActivity(new Intent(this, AbsListNotFullDemoActivity.class));
+    }
+
 }

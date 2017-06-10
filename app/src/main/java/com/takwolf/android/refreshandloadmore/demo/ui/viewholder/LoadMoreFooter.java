@@ -7,11 +7,13 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.TextView;
 
 import com.pnikosis.materialishprogress.ProgressWheel;
 import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 import com.takwolf.android.refreshandloadmore.demo.R;
+import com.takwolf.android.refreshandloadmore.demo.ui.widget.ListView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -66,6 +68,30 @@ public class LoadMoreFooter {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 if (!ViewCompat.canScrollVertically(recyclerView, 1)) {
+                    checkLoadMore();
+                }
+            }
+
+        });
+    }
+
+    public LoadMoreFooter(@NonNull Context context, @NonNull ListView listView, @NonNull OnLoadMoreListener loadMoreListener) {
+        this.loadMoreListener = loadMoreListener;
+        View footerView = LayoutInflater.from(context).inflate(R.layout.footer_load_more, listView, false);
+        listView.addFooterView(footerView, null, false);
+        ButterKnife.bind(this, footerView);
+        listView.addOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                if (view.getLastVisiblePosition() == view.getCount() - 1) {
+                    checkLoadMore();
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (view.getLastVisiblePosition() == view.getCount() - 1) {
                     checkLoadMore();
                 }
             }
