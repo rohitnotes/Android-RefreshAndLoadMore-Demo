@@ -41,7 +41,7 @@ public class ZhihuNotFullDemoActivity extends AppCompatActivity implements Swipe
         setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("知乎日报第一页不足一屏");
+        toolbar.setTitle("知乎日不足一屏");
         toolbar.setNavigationOnClickListener(new NavigationFinishClickListener(this));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

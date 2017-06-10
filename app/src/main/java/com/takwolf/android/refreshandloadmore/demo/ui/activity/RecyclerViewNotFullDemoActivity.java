@@ -3,20 +3,21 @@ package com.takwolf.android.refreshandloadmore.demo.ui.activity;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 
+import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 import com.takwolf.android.refreshandloadmore.demo.R;
 import com.takwolf.android.refreshandloadmore.demo.model.illust.IllustClient;
-import com.takwolf.android.refreshandloadmore.demo.ui.adapter.IllustListAdapter2;
+import com.takwolf.android.refreshandloadmore.demo.ui.adapter.IllustListAdapter;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
-import com.takwolf.android.refreshandloadmore.demo.ui.widget.ListView;
 import com.takwolf.android.refreshandloadmore.demo.util.HandlerUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AbsListNotFullDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
+public class RecyclerViewNotFullDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
 
     private static final int PAGE_SIZE = 1;
     private static final int TOTAL_COUNT = 8;
@@ -27,25 +28,27 @@ public class AbsListNotFullDemoActivity extends AppCompatActivity implements Swi
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
 
-    @BindView(R.id.list_view)
-    ListView listView;
+    @BindView(R.id.recycler_view)
+    HeaderAndFooterRecyclerView recyclerView;
 
     private LoadMoreFooter loadMoreFooter;
-    private IllustListAdapter2 adapter;
+    private IllustListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view);
+        setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("ListView 第一页不足一屏");
+        toolbar.setTitle("RecyclerView 不足一屏");
         toolbar.setNavigationOnClickListener(new NavigationFinishClickListener(this));
 
-        loadMoreFooter = new LoadMoreFooter(this, listView, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new IllustListAdapter2(this);
-        listView.setAdapter(adapter);
+        loadMoreFooter = new LoadMoreFooter(this, recyclerView, this);
+
+        adapter = new IllustListAdapter(this);
+        recyclerView.setAdapter(adapter);
 
         refreshLayout.setColorSchemeResources(R.color.color_accent);
         refreshLayout.setOnRefreshListener(this);
@@ -75,9 +78,10 @@ public class AbsListNotFullDemoActivity extends AppCompatActivity implements Swi
 
             @Override
             public void run() {
+                int startPosition = adapter.getItemCount();
                 adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
-                adapter.notifyDataSetChanged();
-                loadMoreFooter.setState(adapter.getCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
+                adapter.notifyItemRangeInserted(startPosition, PAGE_SIZE);
+                loadMoreFooter.setState(adapter.getItemCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
             }
 
         }, 1000);

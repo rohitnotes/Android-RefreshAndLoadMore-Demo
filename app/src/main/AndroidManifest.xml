@@ -21,12 +21,12 @@
         </activity>
 
         <activity
-            android:name=".ui.activity.NormalDemoActivity"
+            android:name=".ui.activity.RecyclerViewDemoActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <activity
-            android:name=".ui.activity.StepOneDemoActivity"
+            android:name=".ui.activity.RecyclerViewNotFullDemoActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
@@ -41,12 +41,12 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <activity
-            android:name=".ui.activity.AbsListDemoActivity"
+            android:name=".ui.activity.ListViewDemoActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 
         <activity
-            android:name=".ui.activity.AbsListNotFullDemoActivity"
+            android:name=".ui.activity.ListViewNotFullDemoActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
 

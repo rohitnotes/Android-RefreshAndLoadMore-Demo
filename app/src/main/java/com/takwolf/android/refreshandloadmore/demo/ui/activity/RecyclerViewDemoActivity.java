@@ -17,10 +17,10 @@ import com.takwolf.android.refreshandloadmore.demo.util.HandlerUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StepOneDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
+public class RecyclerViewDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
 
-    private static final int PAGE_SIZE = 1;
-    private static final int TOTAL_COUNT = 8;
+    private static final int PAGE_SIZE = 20;
+    private static final int TOTAL_COUNT = 200;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -40,7 +40,7 @@ public class StepOneDemoActivity extends AppCompatActivity implements SwipeRefre
         setContentView(R.layout.activity_recycler_view);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("步长不足一屏");
+        toolbar.setTitle("RecyclerView 实现");
         toolbar.setNavigationOnClickListener(new NavigationFinishClickListener(this));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

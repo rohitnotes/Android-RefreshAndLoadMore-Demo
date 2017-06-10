@@ -18,24 +18,24 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.btn_normal_demo)
-    void onBtnNormalDemoClick() {
-        startActivity(new Intent(this, NormalDemoActivity.class));
+    @OnClick(R.id.btn_recycler_view_demo)
+    void onBtnRecyclerViewDemoClick() {
+        startActivity(new Intent(this, RecyclerViewDemoActivity.class));
     }
 
-    @OnClick(R.id.btn_step_one_demo)
-    void onBtnStepOneDemoClick() {
-        startActivity(new Intent(this, StepOneDemoActivity.class));
+    @OnClick(R.id.btn_recycler_view_not_full_demo)
+    void onBtnRecyclerViewNotFullDemoClick() {
+        startActivity(new Intent(this, RecyclerViewNotFullDemoActivity.class));
     }
 
-    @OnClick(R.id.btn_abs_list_demo)
-    void onBtnAbsListDemoClick() {
-        startActivity(new Intent(this, AbsListDemoActivity.class));
+    @OnClick(R.id.btn_list_view_demo)
+    void onBtnListViewDemoClick() {
+        startActivity(new Intent(this, ListViewDemoActivity.class));
     }
 
-    @OnClick(R.id.btn_abs_list_not_full_demo)
-    void onBtnAbsListNotFullDemoClick() {
-        startActivity(new Intent(this, AbsListNotFullDemoActivity.class));
+    @OnClick(R.id.btn_list_view_not_full_demo)
+    void onBtnListViewNotFullDemoClick() {
+        startActivity(new Intent(this, ListViewNotFullDemoActivity.class));
     }
 
     @OnClick(R.id.btn_zhihu_demo)

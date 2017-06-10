@@ -3,21 +3,20 @@ package com.takwolf.android.refreshandloadmore.demo.ui.activity;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 
-import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 import com.takwolf.android.refreshandloadmore.demo.R;
 import com.takwolf.android.refreshandloadmore.demo.model.illust.IllustClient;
-import com.takwolf.android.refreshandloadmore.demo.ui.adapter.IllustListAdapter;
+import com.takwolf.android.refreshandloadmore.demo.ui.adapter.IllustListAdapter2;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
+import com.takwolf.android.refreshandloadmore.demo.ui.widget.ListView;
 import com.takwolf.android.refreshandloadmore.demo.util.HandlerUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NormalDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
+public class ListViewDemoActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, LoadMoreFooter.OnLoadMoreListener {
 
     private static final int PAGE_SIZE = 20;
     private static final int TOTAL_COUNT = 200;
@@ -28,27 +27,25 @@ public class NormalDemoActivity extends AppCompatActivity implements SwipeRefres
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
 
-    @BindView(R.id.recycler_view)
-    HeaderAndFooterRecyclerView recyclerView;
+    @BindView(R.id.list_view)
+    ListView listView;
 
     private LoadMoreFooter loadMoreFooter;
-    private IllustListAdapter adapter;
+    private IllustListAdapter2 adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
+        setContentView(R.layout.activity_list_view);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("常规模式");
+        toolbar.setTitle("ListView 实现");
         toolbar.setNavigationOnClickListener(new NavigationFinishClickListener(this));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        loadMoreFooter = new LoadMoreFooter(this, listView, this);
 
-        loadMoreFooter = new LoadMoreFooter(this, recyclerView, this);
-
-        adapter = new IllustListAdapter(this);
-        recyclerView.setAdapter(adapter);
+        adapter = new IllustListAdapter2(this);
+        listView.setAdapter(adapter);
 
         refreshLayout.setColorSchemeResources(R.color.color_accent);
         refreshLayout.setOnRefreshListener(this);
@@ -78,10 +75,9 @@ public class NormalDemoActivity extends AppCompatActivity implements SwipeRefres
 
             @Override
             public void run() {
-                int startPosition = adapter.getItemCount();
                 adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
-                adapter.notifyItemRangeInserted(startPosition, PAGE_SIZE);
-                loadMoreFooter.setState(adapter.getItemCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
+                adapter.notifyDataSetChanged();
+                loadMoreFooter.setState(adapter.getCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
             }
 
         }, 1000);
