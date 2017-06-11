@@ -47,7 +47,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.update(storyList.get(position), position);
+        holder.update(storyList.get(position));
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,9 +58,6 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         @BindView(R.id.img_thumb)
         ImageView imgThumb;
 
-        @BindView(R.id.icon_padding_top)
-        View iconPaddingTop;
-
         private Story story;
 
         ViewHolder(View itemView) {
@@ -68,11 +65,10 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
             ButterKnife.bind(this, itemView);
         }
 
-        void update(@NonNull Story story, int position) {
+        void update(@NonNull Story story) {
             this.story = story;
             tvTitle.setText(story.getTitle());
             Glide.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);
-            iconPaddingTop.setVisibility(position == 0 ? View.VISIBLE : View.GONE);
         }
 
     }

@@ -15,6 +15,8 @@ import com.takwolf.android.refreshandloadmore.demo.model.zhihu.ZhihuClient;
 import com.takwolf.android.refreshandloadmore.demo.ui.adapter.StoryListAdapter;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
+import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.PaddingFooter;
+import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.PaddingHeader;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,6 +49,8 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         loadMoreFooter = new LoadMoreFooter(this, recyclerView, this);
+        new PaddingHeader(this, recyclerView);
+        new PaddingFooter(this, recyclerView);
 
         adapter = new StoryListAdapter(this);
         recyclerView.setAdapter(adapter);
