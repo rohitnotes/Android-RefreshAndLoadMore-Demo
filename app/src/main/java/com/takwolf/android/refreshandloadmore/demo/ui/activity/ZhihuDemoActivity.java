@@ -14,6 +14,7 @@ import com.takwolf.android.refreshandloadmore.demo.model.zhihu.StoryPage;
 import com.takwolf.android.refreshandloadmore.demo.model.zhihu.ZhihuClient;
 import com.takwolf.android.refreshandloadmore.demo.ui.adapter.StoryListAdapter;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
+import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.PaddingFooter;
 import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.PaddingHeader;
@@ -77,6 +78,7 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onKindsOfError(@NonNull String message) {
+                ToastUtils.with(ZhihuDemoActivity.this).show(message);
                 refreshLayout.setRefreshing(false);
             }
 
@@ -98,6 +100,7 @@ public class ZhihuDemoActivity extends AppCompatActivity implements SwipeRefresh
 
             @Override
             public void onKindsOfError(@NonNull String message) {
+                ToastUtils.with(ZhihuDemoActivity.this).show(message);
                 loadMoreFooter.setState(LoadMoreFooter.STATE_FAILED);
             }
 
