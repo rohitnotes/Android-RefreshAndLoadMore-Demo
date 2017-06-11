@@ -1,6 +1,20 @@
 # Android - RefreshAndLoadMore Demo #
 
-下拉刷新和加载更多例子。
+一种简单的并且优雅的方式实现下拉刷新和加载更多的分页效果。
+
+包含 ListView 和 RecyclerView 两种组件的对应实现。
+
+下拉刷新基于 SwipeRefreshLayout 实现。
+
+加载更多通过在列表底部添加 FooterView 实现。
+
+考虑了第一次请求数据填充不足一屏的特殊情况。
+
+ListView 做了少许扩展以便支持 addOnScrollListener。
+
+使用了 [HeaderAndFooterRecyclerView](https://github.com/TakWolf/Android-HeaderAndFooterRecyclerView) 让 RecyclerView 支持添加 FooterView。
+
+请在[这里](https://fir.im/refreshandloadmore)下载示例程序，或者运行示例工程以便查看更多演示。
 
 ## Author ##
 
