@@ -12,12 +12,14 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.takwolf.android.refreshandloadmore.demo.R;
 import com.takwolf.android.refreshandloadmore.demo.model.zhihu.Story;
+import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.ViewHolder> {
 
@@ -69,6 +71,11 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
             this.story = story;
             tvTitle.setText(story.getTitle());
             Glide.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);
+        }
+
+        @OnClick(R.id.btn_item)
+        void onBtnItemClick() {
+            ToastUtils.with(activity).show(story.getTitle());
         }
 
     }

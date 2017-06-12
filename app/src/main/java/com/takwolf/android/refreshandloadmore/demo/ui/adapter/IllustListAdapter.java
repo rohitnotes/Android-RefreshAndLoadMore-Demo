@@ -11,12 +11,14 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.takwolf.android.refreshandloadmore.demo.R;
 import com.takwolf.android.refreshandloadmore.demo.model.illust.Illust;
+import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class IllustListAdapter extends RecyclerView.Adapter<IllustListAdapter.ViewHolder> {
 
@@ -64,6 +66,11 @@ public class IllustListAdapter extends RecyclerView.Adapter<IllustListAdapter.Vi
         void update(@NonNull Illust illust) {
             this.illust = illust;
             Glide.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
+        }
+
+        @OnClick(R.id.btn_item)
+        void onBtnItemClick() {
+            ToastUtils.with(activity).show(illust.getImage());
         }
 
     }
