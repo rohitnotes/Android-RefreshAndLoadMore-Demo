@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ListView extends android.widget.ListView {
 
-    private final OnScrollListenerProxy scrollListenerProxy = new OnScrollListenerProxy();
+    private final OnScrollListenerProxy onScrollListenerProxy = new OnScrollListenerProxy();
 
     public ListView(@NonNull Context context) {
         super(context);
@@ -39,39 +39,39 @@ public class ListView extends android.widget.ListView {
     }
 
     private void init() {
-        super.setOnScrollListener(scrollListenerProxy);
+        super.setOnScrollListener(onScrollListenerProxy);
     }
 
     @Override
     @Deprecated
     public void setOnScrollListener(OnScrollListener listener) {
-        scrollListenerProxy.setOnScrollListener(listener);
+        onScrollListenerProxy.setOnScrollListener(listener);
     }
 
     public void addOnScrollListener(OnScrollListener listener) {
-        scrollListenerProxy.addOnScrollListener(listener);
+        onScrollListenerProxy.addOnScrollListener(listener);
     }
 
     public void removeOnScrollListener(OnScrollListener listener) {
-        scrollListenerProxy.removeOnScrollListener(listener);
+        onScrollListenerProxy.removeOnScrollListener(listener);
     }
 
     public void clearOnScrollListeners() {
-        scrollListenerProxy.clearOnScrollListeners();
+        onScrollListenerProxy.clearOnScrollListeners();
     }
 
     private static class OnScrollListenerProxy implements OnScrollListener {
 
-        private OnScrollListener scrollListener;
-        private List<OnScrollListener> scrollListenerList;
+        private OnScrollListener onScrollListener;
+        private List<OnScrollListener> onScrollListenerList;
 
         @Override
         public void onScrollStateChanged(AbsListView view, int scrollState) {
-            if (scrollListener != null) {
-                scrollListener.onScrollStateChanged(view, scrollState);
+            if (onScrollListener != null) {
+                onScrollListener.onScrollStateChanged(view, scrollState);
             }
-            if (scrollListenerList != null && scrollListenerList.size() > 0) {
-                for (OnScrollListener onScrollListener : scrollListenerList) {
+            if (onScrollListenerList != null && onScrollListenerList.size() > 0) {
+                for (OnScrollListener onScrollListener : onScrollListenerList) {
                     onScrollListener.onScrollStateChanged(view, scrollState);
                 }
             }
@@ -79,36 +79,36 @@ public class ListView extends android.widget.ListView {
 
         @Override
         public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-            if (scrollListener != null) {
-                scrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
+            if (onScrollListener != null) {
+                onScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
             }
-            if (scrollListenerList != null && scrollListenerList.size() > 0) {
-                for (OnScrollListener onScrollListener : scrollListenerList) {
+            if (onScrollListenerList != null && onScrollListenerList.size() > 0) {
+                for (OnScrollListener onScrollListener : onScrollListenerList) {
                     onScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
                 }
             }
         }
 
         void setOnScrollListener(OnScrollListener listener) {
-            scrollListener = listener;
+            onScrollListener = listener;
         }
 
         void addOnScrollListener(OnScrollListener listener) {
-            if (scrollListenerList == null) {
-                scrollListenerList = new ArrayList<>();
+            if (onScrollListenerList == null) {
+                onScrollListenerList = new ArrayList<>();
             }
-            scrollListenerList.add(listener);
+            onScrollListenerList.add(listener);
         }
 
         void removeOnScrollListener(OnScrollListener listener) {
-            if (scrollListenerList != null) {
-                scrollListenerList.remove(listener);
+            if (onScrollListenerList != null) {
+                onScrollListenerList.remove(listener);
             }
         }
 
         void clearOnScrollListeners() {
-            if (scrollListenerList != null) {
-                scrollListenerList.clear();
+            if (onScrollListenerList != null) {
+                onScrollListenerList.clear();
             }
         }
 
