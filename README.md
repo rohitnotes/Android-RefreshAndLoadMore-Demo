@@ -14,7 +14,9 @@ ListView 做了少许扩展以便支持 addOnScrollListener。
 
 使用了 [HeaderAndFooterRecyclerView](https://github.com/TakWolf/Android-HeaderAndFooterRecyclerView) 让 RecyclerView 支持添加 FooterView。
 
-请在[这里](https://fir.im/refreshandloadmore)下载示例程序，或者运行示例工程以便查看更多演示。
+![](http://takwolf.com/static/github/Android-RefreshAndLoadMore-Demo/01.gif)
+
+请在[这里](https://fir.im/refreshandloadmore)下载示例程序。
 
 ## Author ##
 
