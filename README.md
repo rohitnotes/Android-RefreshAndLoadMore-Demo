@@ -18,6 +18,8 @@ ListView 做了少许扩展以便支持 addOnScrollListener。
 
 请在[这里](https://fir.im/refreshandloadmore)下载示例程序。
 
+对应文章说明，请查看 [http://blog.takwolf.com/2017/06/15/android-refresh-and-load-more-demo](http://blog.takwolf.com/2017/06/15/android-refresh-and-load-more-demo)
+
 ## Author ##
 
 TakWolf
