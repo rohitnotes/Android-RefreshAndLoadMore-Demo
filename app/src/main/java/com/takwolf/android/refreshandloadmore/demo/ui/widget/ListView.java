@@ -70,7 +70,7 @@ public class ListView extends android.widget.ListView {
             if (onScrollListener != null) {
                 onScrollListener.onScrollStateChanged(view, scrollState);
             }
-            if (onScrollListenerList != null && onScrollListenerList.size() > 0) {
+            if (onScrollListenerList != null && !onScrollListenerList.isEmpty()) {
                 for (OnScrollListener onScrollListener : onScrollListenerList) {
                     onScrollListener.onScrollStateChanged(view, scrollState);
                 }
@@ -82,7 +82,7 @@ public class ListView extends android.widget.ListView {
             if (onScrollListener != null) {
                 onScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
             }
-            if (onScrollListenerList != null && onScrollListenerList.size() > 0) {
+            if (onScrollListenerList != null && !onScrollListenerList.isEmpty()) {
                 for (OnScrollListener onScrollListener : onScrollListenerList) {
                     onScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
                 }
