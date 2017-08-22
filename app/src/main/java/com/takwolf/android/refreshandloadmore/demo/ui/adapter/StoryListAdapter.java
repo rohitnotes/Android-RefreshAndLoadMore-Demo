@@ -62,7 +62,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
 
         private Story story;
 
-        ViewHolder(View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

@@ -72,7 +72,7 @@ public class IllustListAdapter2 extends BaseAdapter {
 
         private Illust illust;
 
-        ViewHolder(View itemView) {
+        ViewHolder(@NonNull View itemView) {
             ButterKnife.bind(this, itemView);
         }
 
