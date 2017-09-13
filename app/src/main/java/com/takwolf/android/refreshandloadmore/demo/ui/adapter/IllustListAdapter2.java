@@ -56,7 +56,7 @@ public class IllustListAdapter2 extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_illust, parent, false);
-            holder = new ViewHolder(convertView);
+            holder = new ViewHolder(activity, convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -65,14 +65,17 @@ public class IllustListAdapter2 extends BaseAdapter {
         return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
 
         @BindView(R.id.img_thumb)
         ImageView imgThumb;
 
+        private final Activity activity;
+
         private Illust illust;
 
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull Activity activity, @NonNull View itemView) {
+            this.activity = activity;
             ButterKnife.bind(this, itemView);
         }
 

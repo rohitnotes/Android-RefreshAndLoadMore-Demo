@@ -44,7 +44,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.item_story, parent, false));
+        return new ViewHolder(activity, inflater.inflate(R.layout.item_story, parent, false));
     }
 
     @Override
@@ -52,7 +52,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         holder.update(storyList.get(position));
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_title)
         TextView tvTitle;
@@ -60,10 +60,13 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         @BindView(R.id.img_thumb)
         ImageView imgThumb;
 
+        private final Activity activity;
+
         private Story story;
 
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull Activity activity, @NonNull View itemView) {
             super(itemView);
+            this.activity = activity;
             ButterKnife.bind(this, itemView);
         }
 
