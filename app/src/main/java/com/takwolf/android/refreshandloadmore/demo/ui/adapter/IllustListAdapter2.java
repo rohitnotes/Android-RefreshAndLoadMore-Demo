@@ -56,12 +56,12 @@ public class IllustListAdapter2 extends BaseAdapter {
         ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_illust, parent, false);
-            holder = new ViewHolder(activity, convertView);
+            holder = new ViewHolder(convertView, activity);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.update(illustList.get(position));
+        holder.onBind(illustList.get(position));
         return convertView;
     }
 
@@ -74,12 +74,12 @@ public class IllustListAdapter2 extends BaseAdapter {
 
         private Illust illust;
 
-        ViewHolder(@NonNull Activity activity, @NonNull View itemView) {
+        ViewHolder(@NonNull View itemView, @NonNull Activity activity) {
             this.activity = activity;
             ButterKnife.bind(this, itemView);
         }
 
-        void update(@NonNull Illust illust) {
+        void onBind(@NonNull Illust illust) {
             this.illust = illust;
             Glide.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
         }

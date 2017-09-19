@@ -44,12 +44,12 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(activity, inflater.inflate(R.layout.item_story, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.item_story, parent, false), activity);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.update(storyList.get(position));
+        holder.onBind(storyList.get(position));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -64,13 +64,13 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
 
         private Story story;
 
-        ViewHolder(@NonNull Activity activity, @NonNull View itemView) {
+        ViewHolder(@NonNull View itemView, @NonNull Activity activity) {
             super(itemView);
             this.activity = activity;
             ButterKnife.bind(this, itemView);
         }
 
-        void update(@NonNull Story story) {
+        void onBind(@NonNull Story story) {
             this.story = story;
             tvTitle.setText(story.getTitle());
             Glide.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);

@@ -43,12 +43,12 @@ public class IllustListAdapter extends RecyclerView.Adapter<IllustListAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(activity, inflater.inflate(R.layout.item_illust, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.item_illust, parent, false), activity);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.update(illustList.get(position));
+        holder.onBind(illustList.get(position));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,13 +60,13 @@ public class IllustListAdapter extends RecyclerView.Adapter<IllustListAdapter.Vi
 
         private Illust illust;
 
-        ViewHolder(@NonNull Activity activity, @NonNull View itemView) {
+        ViewHolder(@NonNull View itemView, @NonNull Activity activity) {
             super(itemView);
             this.activity = activity;
             ButterKnife.bind(this, itemView);
         }
 
-        void update(@NonNull Illust illust) {
+        void onBind(@NonNull Illust illust) {
             this.illust = illust;
             Glide.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
         }
