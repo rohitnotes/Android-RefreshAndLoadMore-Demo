@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.takwolf.android.refreshandloadmore.demo.R;
+import com.takwolf.android.refreshandloadmore.demo.model.GlideApp;
 import com.takwolf.android.refreshandloadmore.demo.model.illust.Illust;
 import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 
@@ -68,7 +68,7 @@ public class IllustListAdapter extends RecyclerView.Adapter<IllustListAdapter.Vi
 
         void onBind(@NonNull Illust illust) {
             this.illust = illust;
-            Glide.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
+            GlideApp.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
         }
 
         @OnClick(R.id.btn_item)

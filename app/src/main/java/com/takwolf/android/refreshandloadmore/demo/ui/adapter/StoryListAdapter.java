@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.takwolf.android.refreshandloadmore.demo.R;
+import com.takwolf.android.refreshandloadmore.demo.model.GlideApp;
 import com.takwolf.android.refreshandloadmore.demo.model.zhihu.Story;
 import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 
@@ -73,7 +73,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
         void onBind(@NonNull Story story) {
             this.story = story;
             tvTitle.setText(story.getTitle());
-            Glide.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);
+            GlideApp.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);
         }
 
         @OnClick(R.id.btn_item)
