@@ -44,11 +44,11 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.0'
 
     implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
-    implementation 'com.takwolf.android:hf-recyclerview:0.2.0'
+    implementation 'com.takwolf.android:hf-recyclerview:0.3.0'
     implementation 'com.pnikosis:materialish-progress:1.7'
 }
