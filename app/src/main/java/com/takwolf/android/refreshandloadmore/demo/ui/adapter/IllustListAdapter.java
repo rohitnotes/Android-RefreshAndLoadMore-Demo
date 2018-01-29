@@ -48,7 +48,7 @@ public class IllustListAdapter extends RecyclerView.Adapter<IllustListAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.onBind(illustList.get(position));
+        holder.bind(illustList.get(position));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -66,7 +66,7 @@ public class IllustListAdapter extends RecyclerView.Adapter<IllustListAdapter.Vi
             ButterKnife.bind(this, itemView);
         }
 
-        void onBind(@NonNull Illust illust) {
+        void bind(@NonNull Illust illust) {
             this.illust = illust;
             GlideApp.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
         }

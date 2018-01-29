@@ -49,7 +49,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.onBind(storyList.get(position));
+        holder.bind(storyList.get(position));
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -70,7 +70,7 @@ public class StoryListAdapter extends RecyclerView.Adapter<StoryListAdapter.View
             ButterKnife.bind(this, itemView);
         }
 
-        void onBind(@NonNull Story story) {
+        void bind(@NonNull Story story) {
             this.story = story;
             tvTitle.setText(story.getTitle());
             GlideApp.with(activity).load(story.getImageList().get(0)).placeholder(R.drawable.image_placeholder).into(imgThumb);

@@ -61,7 +61,7 @@ public class IllustListAdapter2 extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.onBind(illustList.get(position));
+        holder.bind(illustList.get(position));
         return convertView;
     }
 
@@ -79,7 +79,7 @@ public class IllustListAdapter2 extends BaseAdapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void onBind(@NonNull Illust illust) {
+        void bind(@NonNull Illust illust) {
             this.illust = illust;
             GlideApp.with(activity).load(illust.getImage()).placeholder(R.drawable.image_placeholder).into(imgThumb);
         }
