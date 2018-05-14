@@ -11,7 +11,7 @@ public class Story {
     private String type;
 
     @SerializedName("ga_prefix")
-    private String  gaPrefix;
+    private String gaPrefix;
 
     private String title;
 
