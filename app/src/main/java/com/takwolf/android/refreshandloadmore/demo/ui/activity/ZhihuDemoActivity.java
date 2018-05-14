@@ -14,11 +14,11 @@ import com.takwolf.android.refreshandloadmore.demo.model.zhihu.CallbackWrapper;
 import com.takwolf.android.refreshandloadmore.demo.model.zhihu.StoryPage;
 import com.takwolf.android.refreshandloadmore.demo.model.zhihu.ZhihuClient;
 import com.takwolf.android.refreshandloadmore.demo.ui.adapter.StoryListAdapter;
+import com.takwolf.android.refreshandloadmore.demo.ui.holder.LoadMoreFooter;
+import com.takwolf.android.refreshandloadmore.demo.ui.holder.PaddingFooter;
+import com.takwolf.android.refreshandloadmore.demo.ui.holder.PaddingHeader;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
 import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
-import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
-import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.PaddingFooter;
-import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.PaddingHeader;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

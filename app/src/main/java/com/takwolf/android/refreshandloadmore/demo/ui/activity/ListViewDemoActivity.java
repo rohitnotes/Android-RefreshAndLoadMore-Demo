@@ -9,8 +9,8 @@ import android.support.v7.widget.Toolbar;
 import com.takwolf.android.refreshandloadmore.demo.R;
 import com.takwolf.android.refreshandloadmore.demo.model.illust.IllustClient;
 import com.takwolf.android.refreshandloadmore.demo.ui.adapter.IllustListAdapter2;
+import com.takwolf.android.refreshandloadmore.demo.ui.holder.LoadMoreFooter;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
-import com.takwolf.android.refreshandloadmore.demo.ui.viewholder.LoadMoreFooter;
 import com.takwolf.android.refreshandloadmore.demo.ui.widget.ListView;
 import com.takwolf.android.refreshandloadmore.demo.util.HandlerUtils;
 

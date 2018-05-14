@@ -1,4 +1,4 @@
-package com.takwolf.android.refreshandloadmore.demo.ui.viewholder;
+package com.takwolf.android.refreshandloadmore.demo.ui.holder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
