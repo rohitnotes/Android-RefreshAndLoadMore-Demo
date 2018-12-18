@@ -11,7 +11,7 @@ import retrofit2.Response;
 public class CallbackWrapper<T> implements Callback<T> {
 
     @Override
-    public final void onResponse(Call<T> call, final Response<T> response) {
+    public final void onResponse(@NonNull Call<T> call, @NonNull final Response<T> response) {
         if (response.isSuccessful()) {
             // 让网络调用时间长一点，以便更明显看到效果
             HandlerUtils.handler.postDelayed(new Runnable() {
@@ -28,7 +28,7 @@ public class CallbackWrapper<T> implements Callback<T> {
     }
 
     @Override
-    public final void onFailure(Call<T> call, Throwable t) {
+    public final void onFailure(@NonNull Call<T> call, @NonNull Throwable t) {
         onKindsOfError("网络错误：" + t.getMessage());
     }
 

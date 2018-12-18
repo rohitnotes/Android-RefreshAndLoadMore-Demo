@@ -1,6 +1,7 @@
 package com.takwolf.android.refreshandloadmore.demo.model.zhihu;
 
 import android.os.Build;
+import android.support.annotation.NonNull;
 
 import com.takwolf.android.refreshandloadmore.demo.BuildConfig;
 
@@ -30,13 +31,15 @@ public final class ZhihuClient {
             .build()
             .create(ZhihuService.class);
 
+    @NonNull
     private static Interceptor createUserAgentInterceptor() {
         return new Interceptor() {
 
             private static final String HEADER_USER_AGENT = "User-Agent";
 
+            @NonNull
             @Override
-            public Response intercept(Chain chain) throws IOException {
+            public Response intercept(@NonNull Chain chain) throws IOException {
                 return chain.proceed(chain.request().newBuilder()
                         .header(HEADER_USER_AGENT, USER_AGENT)
                         .build());
@@ -45,6 +48,7 @@ public final class ZhihuClient {
         };
     }
 
+    @NonNull
     private static Interceptor createHttpLoggingInterceptor() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
