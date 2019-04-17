@@ -1,9 +1,6 @@
 package com.takwolf.android.refreshandloadmore.demo.ui.holder;
 
 import android.content.Context;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AbsListView;
@@ -17,6 +14,9 @@ import com.takwolf.android.refreshandloadmore.demo.ui.widget.ListView;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

@@ -1,9 +1,8 @@
 package com.takwolf.android.refreshandloadmore.demo.model.zhihu;
 
-import android.support.annotation.NonNull;
-
 import com.takwolf.android.refreshandloadmore.demo.util.HandlerUtils;
 
+import androidx.annotation.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

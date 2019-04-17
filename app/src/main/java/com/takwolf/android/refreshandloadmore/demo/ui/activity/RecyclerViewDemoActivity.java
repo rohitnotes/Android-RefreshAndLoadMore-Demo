@@ -1,11 +1,6 @@
 package com.takwolf.android.refreshandloadmore.demo.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 
 import com.takwolf.android.hfrecyclerview.HeaderAndFooterRecyclerView;
 import com.takwolf.android.refreshandloadmore.demo.R;
@@ -15,6 +10,11 @@ import com.takwolf.android.refreshandloadmore.demo.ui.holder.LoadMoreFooter;
 import com.takwolf.android.refreshandloadmore.demo.ui.listener.NavigationFinishClickListener;
 import com.takwolf.android.refreshandloadmore.demo.util.HandlerUtils;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -59,32 +59,22 @@ public class RecyclerViewDemoActivity extends AppCompatActivity implements Swipe
 
     @Override
     public void onRefresh() {
-        HandlerUtils.handler.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                adapter.getIllustList().clear();
-                adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
-                adapter.notifyDataSetChanged();
-                refreshLayout.setRefreshing(false);
-                loadMoreFooter.setState(LoadMoreFooter.STATE_ENDLESS);
-            }
-
+        HandlerUtils.handler.postDelayed(() -> {
+            adapter.getIllustList().clear();
+            adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
+            adapter.notifyDataSetChanged();
+            refreshLayout.setRefreshing(false);
+            loadMoreFooter.setState(LoadMoreFooter.STATE_ENDLESS);
         }, 1000);
     }
 
     @Override
     public void onLoadMore() {
-        HandlerUtils.handler.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                int startPosition = adapter.getItemCount();
-                adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
-                adapter.notifyItemRangeInserted(startPosition, PAGE_SIZE);
-                loadMoreFooter.setState(adapter.getItemCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
-            }
-
+        HandlerUtils.handler.postDelayed(() -> {
+            int startPosition = adapter.getItemCount();
+            adapter.getIllustList().addAll(IllustClient.buildIllustList(PAGE_SIZE));
+            adapter.notifyItemRangeInserted(startPosition, PAGE_SIZE);
+            loadMoreFooter.setState(adapter.getItemCount() >= TOTAL_COUNT ? LoadMoreFooter.STATE_FINISHED : LoadMoreFooter.STATE_ENDLESS);
         }, 1000);
     }
 

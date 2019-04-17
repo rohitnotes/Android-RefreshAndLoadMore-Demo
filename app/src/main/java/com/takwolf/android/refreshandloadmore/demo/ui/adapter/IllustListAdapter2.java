@@ -1,7 +1,6 @@
 package com.takwolf.android.refreshandloadmore.demo.ui.adapter;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import com.takwolf.android.refreshandloadmore.demo.ui.util.ToastUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

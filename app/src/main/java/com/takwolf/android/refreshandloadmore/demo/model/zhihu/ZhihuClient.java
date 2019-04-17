@@ -1,12 +1,12 @@
 package com.takwolf.android.refreshandloadmore.demo.model.zhihu;
 
 import android.os.Build;
-import android.support.annotation.NonNull;
 
 import com.takwolf.android.refreshandloadmore.demo.BuildConfig;
 
 import java.io.IOException;
 
+import androidx.annotation.NonNull;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;
